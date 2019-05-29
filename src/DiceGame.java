@@ -14,7 +14,7 @@ public class DiceGame {
 	
 	public static double betOnRoll() {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("How much money you want to bet?");
+		System.out.println("How much money you want to bet? Must start with at least $10 ");
 		double enterMoney = scan.nextInt();
 		System.out.println("Your bet is 10% of what you entered");
 		return enterMoney;
@@ -27,16 +27,18 @@ public class DiceGame {
 
 			Scanner scan = new Scanner(System.in);
 			System.out.println();
-			System.out.println("Would you like to bet on Dice?");
+			System.out.println("Would you like to play Dice?");
 			String userInput = scan.nextLine();
 			System.out.println();
-			
-			if (userInput.equalsIgnoreCase("Yes")) {
+			if(enterMoney < 10) {
+				System.out.println("You cant play without any money!");
+				enterMoney = betOnRoll();
+				continue;
+			}else if (userInput.equalsIgnoreCase("Yes")) {
 				
 				String message = rollEm(point);
 				System.out.println(message);
-
-			}else if (userInput.equalsIgnoreCase("No")){ 
+				}else if (userInput.equalsIgnoreCase("No")){ 
 				System.out.println("Thanks for playing");
 				break;
 			}
