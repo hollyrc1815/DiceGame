@@ -71,9 +71,10 @@ public class DiceGame {
 		if(point == 2 || point == 3 || point == 12) {
 			System.out.println("You rolled " + point );
 			System.out.println();
-			lose = bet * 3;
+			lose = bet * 4;
 			message = "You just lost all your money! This game is over!";
 			System.out.println(   "You lost: " + lose+ " Your new totoal is " + (enterMoney - lose));
+			enterMoney = enterMoney - lose;
 			return message;
 		}
 		else { 
@@ -85,16 +86,18 @@ public class DiceGame {
 				System.out.println("You rolled " + nextRoll );
 
 				if(nextRoll == point) {
-					winnings = bet * 2;
+					winnings = bet * 1.5;
 					message = "Your New Roll is " + nextRoll + " You keep some of your money!";
 					System.out.println();
 					System.out.println(  "You won: " + winnings+ " Your new totoal is " + (winnings + enterMoney));
+					enterMoney = enterMoney + winnings;
 					gameOver = true;
 				}
 				else if(nextRoll == 7 || nextRoll == 11) {
 					message = "Your rolled a " + nextRoll + " You lost your bet!! Run my MONEY!!!!!";
 					System.out.println();
 					System.out.println(  "You lost: " + bet+ " Your new totoal is " + (enterMoney - bet));
+					enterMoney = enterMoney - bet;
 					gameOver = true;
 				}
 				
